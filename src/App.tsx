@@ -1,5 +1,11 @@
+import Button from "@mui/material/Button";
+
 function App() {
-  return <>music website</>;
+  return (
+    <>
+      <Button>music website</Button>
+    </>
+  );
 }
 
 export default App;
