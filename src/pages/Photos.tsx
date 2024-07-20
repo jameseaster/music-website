@@ -3,12 +3,12 @@ import { Box } from "@mui/material";
 import Page from "../components/Page";
 
 /**
- * Music Page
+ * Photos Page
  */
-export default function Music() {
+export default function Photos() {
   return (
     <Page>
-      <Box sx={{ mt: 4 }}>Music</Box>
+      <Box sx={{ mt: 4 }}>Photos</Box>
     </Page>
   );
 }

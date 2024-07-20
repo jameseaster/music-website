@@ -22,7 +22,7 @@ interface Action {
 
 // Initial state values for app state
 const initialState = {
-  activeTabIndex: 0,
+  activeTabIndex: 4,
   showLoadingOverlay: false,
 };
 
