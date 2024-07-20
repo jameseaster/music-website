@@ -1,9 +1,12 @@
+// Imports
 import { useState } from "react";
-import Radio from "@mui/material/Radio";
 import { useTheme } from "@mui/material";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import ListItemButton from "@mui/material/ListItemButton";
 import { useColorMode } from "../context/Providers/ColorMode";
 
 /**
@@ -20,20 +23,25 @@ export default function ColorModeSwitch() {
   const colorMode = useColorMode();
 
   // Change color mode
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newMode = (event.target as HTMLInputElement).value;
-    if (newMode === "dark" || newMode === "light") {
-      setMode(newMode);
-      colorMode.toggle();
+  const handleChange = () => {
+    if (mode === "dark") {
+      setMode("light");
+      window.localStorage.setItem("colorMode", "light");
+    } else if (mode === "light") {
+      setMode("dark");
+      window.localStorage.setItem("colorMode", "dark");
     }
+    colorMode.toggle();
   };
 
   return (
-    <FormControl>
-      <RadioGroup row value={mode} onChange={handleChange}>
-        <FormControlLabel value="light" control={<Radio />} label="Light" />
-        <FormControlLabel value="dark" control={<Radio />} label="Dark" />
-      </RadioGroup>
-    </FormControl>
+    <ListItem>
+      <ListItemButton sx={{ borderRadius: 12 }} onClick={handleChange}>
+        <ListItemIcon>
+          {mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
+        </ListItemIcon>
+        <ListItemText primary={"Color Mode"} />
+      </ListItemButton>
+    </ListItem>
   );
 }

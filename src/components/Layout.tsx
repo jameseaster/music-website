@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
 import NavDrawer from "./NavDrawer";
-import MobileHeader from "./MobileHeader";
 import Toolbar from "@mui/material/Toolbar";
+import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "@mui/material/IconButton";
 
 // Types
 export interface LayoutProps {
@@ -27,9 +28,13 @@ export default function Layout(props: LayoutProps) {
   const toggleDrawer = () => setOpenDrawer((state) => !state);
 
   return (
-    <Box sx={{ display: "flex" }}>
-      {/* Header */}
-      <MobileHeader toggleDrawer={toggleDrawer} />
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      {/* Hamburger Menu Icon */}
+      <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
+        <IconButton onClick={toggleDrawer}>
+          <MenuIcon sx={{ color: (theme) => theme.palette.text.primary }} />
+        </IconButton>
+      </Box>
 
       {/* Drawer */}
       <NavDrawer

@@ -3,11 +3,10 @@ import { Box } from "@mui/material";
 import List from "@mui/material/List";
 import Drawer from "@mui/material/Drawer";
 import ListItem from "@mui/material/ListItem";
-import { useTheme } from "@mui/material/styles";
+import ColorModeSwitch from "./ColorModeSwitch";
 import { APP_CONSTANTS } from "../utils/constants";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import ListItemButton from "@mui/material/ListItemButton";
 
 // Types
@@ -29,14 +28,9 @@ export default function NavDrawer(props: NavDrawerProps) {
   // Props
   const { tabs, selectedIndex, onTabSelect, openDrawer, setOpenDrawer } = props;
 
-  // Hooks
-  const theme = useTheme();
-  const isLargerScreen = useMediaQuery(theme.breakpoints.up("md"));
-
   // Selects tab and closes drawer
   const handleTabSelect = (index: number) => {
     onTabSelect(index);
-    setOpenDrawer(false);
   };
 
   // Top items
@@ -61,13 +55,23 @@ export default function NavDrawer(props: NavDrawerProps) {
     );
   };
 
+  // Bottom items
+  const BottomDrawerItems = () => {
+    return (
+      <Box>
+        <List>
+          <ColorModeSwitch />
+        </List>
+      </Box>
+    );
+  };
+
   return (
     <Drawer
       anchor="left"
-      ModalProps={{ keepMounted: true }}
-      open={isLargerScreen || openDrawer}
+      open={openDrawer}
       onClose={() => setOpenDrawer(false)}
-      variant={isLargerScreen ? "permanent" : "temporary"}
+      variant={"temporary"}
       sx={{
         flexShrink: 0,
         width: drawerWidth,
@@ -79,6 +83,7 @@ export default function NavDrawer(props: NavDrawerProps) {
       }}
     >
       <TopDrawerItems />
+      <BottomDrawerItems />
     </Drawer>
   );
 }

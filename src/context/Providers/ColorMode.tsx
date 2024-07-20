@@ -27,9 +27,9 @@ const lightTheme = createTheme({
     warning: {
       main: "#FFB703",
     },
-    background: {
-      default: "#D5CABD",
-    },
+    // background: {
+    //   default: "#FFFFFF",
+    // },
   },
   components: {
     MuiListItemButton: {
@@ -74,7 +74,9 @@ const darkTheme = createTheme({
  */
 export default function ColorModeProvider({ children }: Props) {
   // Local State
-  const [mode, setMode] = useState<ColorMode>(APP_CONSTANTS.DEFAULT_THEME);
+  const [mode, setMode] = useState<ColorMode>(
+    window.localStorage?.colorMode || APP_CONSTANTS.DEFAULT_THEME
+  );
 
   // MUI Theme
   const theme = useMemo(() => {
