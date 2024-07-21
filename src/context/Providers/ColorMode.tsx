@@ -34,18 +34,18 @@ const lightTheme = createTheme({
   components: {
     MuiListItemButton: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          "&.Mui-selected": {
-            "&:hover": {
-              backgroundColor: theme.palette.primary.main,
-            },
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.background.paper,
-            ".MuiListItemIcon-root": {
-              color: theme.palette.background.paper,
-            },
-          },
-        }),
+        // root: ({ theme }) => ({
+        // "&.Mui-selected": {
+        //   "&:hover": {
+        //     backgroundColor: theme.palette.primary.main,
+        //   },
+        //   backgroundColor: theme.palette.primary.main,
+        //   color: theme.palette.background.paper,
+        //   ".MuiListItemIcon-root": {
+        //     color: theme.palette.background.paper,
+        //   },
+        // },
+        // }),
       },
     },
   },
@@ -58,7 +58,7 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#4E8397",
+      main: "#2f4f4f",
     },
     secondary: {
       main: "#845EC2",

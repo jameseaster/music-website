@@ -39,30 +39,27 @@ export default function Playlist(props: PlaylistProps) {
   const { list, handleSelect, height = 400, selectedIndex } = props;
 
   return (
-    <div style={{ width: "200px" }}>
-      <List
-        sx={{
-          p: 0,
-          width: "100%",
-          height: height,
-          maxWidth: "360px",
-          overflowX: "hidden",
-          borderRadius: "8px",
-          bgcolor: "background.paper",
-        }}
-        component="nav"
-        subheader={<ListSubheader component="div">House Plants</ListSubheader>}
-      >
-        {list.map((item: Track | Video, idx: number) => (
-          <ListItemButton
-            key={idx}
-            selected={selectedIndex === idx}
-            onClick={() => handleSelect(idx)}
-          >
-            <ListItemText primary={`${idx + 1}. ${item.title}`} />
-          </ListItemButton>
-        ))}
-      </List>
-    </div>
+    <List
+      sx={{
+        width: "100%",
+        height: height,
+        maxWidth: "360px",
+        overflowX: "hidden",
+        borderRadius: "8px",
+        bgcolor: "background.paper",
+      }}
+      component="nav"
+      subheader={<ListSubheader component="div">House Plants</ListSubheader>}
+    >
+      {list.map((item: Track | Video, idx: number) => (
+        <ListItemButton
+          key={idx}
+          selected={selectedIndex === idx}
+          onClick={() => handleSelect(idx)}
+        >
+          <ListItemText primary={`${idx + 1}. ${item.title}`} />
+        </ListItemButton>
+      ))}
+    </List>
   );
 }

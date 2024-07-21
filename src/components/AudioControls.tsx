@@ -1,4 +1,5 @@
 // Imports
+import { Box } from "@mui/material";
 import Pause from "@mui/icons-material/Pause";
 import Next from "@mui/icons-material/SkipNext";
 import Play from "@mui/icons-material/PlayArrow";
@@ -22,7 +23,7 @@ export default function AudioControls(props: AudioControlsProps) {
   const { isPlaying, onPrevClick, onNextClick, onPlayPauseClick } = props;
 
   return (
-    <div className="audio-controls">
+    <Box sx={{ display: "flex", alignItems: "center" }}>
       <IconButton onClick={onPrevClick}>
         <Prev />
       </IconButton>
@@ -38,6 +39,6 @@ export default function AudioControls(props: AudioControlsProps) {
       <IconButton onClick={onNextClick}>
         <Next />
       </IconButton>
-    </div>
+    </Box>
   );
 }

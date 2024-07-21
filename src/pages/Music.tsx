@@ -27,6 +27,7 @@ export default function Music() {
 
   // Select audio track from playlist
   const handleAudioSelect = (key: number) => {
+    setIsFirstSong(false);
     setTrackIndex(key);
   };
 
