@@ -3,8 +3,8 @@ import List from "@mui/material/List";
 import Close from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
 import ListItemButton from "@mui/material/ListItemButton";
+// import ListSubheader from "@mui/material/ListSubheader";
 
 // Types
 export interface Track {
@@ -59,7 +59,9 @@ export default function Playlist(props: PlaylistProps) {
         bgcolor: "background.paper",
       }}
       component="nav"
-      subheader={<ListSubheader component="div">Shareables</ListSubheader>}
+      // subheader={
+      //   <ListSubheader component="div">Add Album Name Here</ListSubheader>
+      // }
     >
       <IconButton
         size="small"

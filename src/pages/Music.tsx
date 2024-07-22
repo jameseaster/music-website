@@ -1,6 +1,5 @@
 // Imports
 import { useState } from "react";
-import { Box } from "@mui/material";
 import Page from "../components/Page";
 import { tracks } from "../assets/tracks";
 import AudioPlayer from "../components/AudioPlayer";
@@ -33,15 +32,13 @@ export default function Music() {
 
   return (
     <Page>
-      <Box sx={{ mt: 6 }}>
-        <AudioPlayer
-          skip={skip}
-          tracks={tracks}
-          trackIndex={trackIndex}
-          isFirstSong={isFirstSong}
-          handleSelect={handleAudioSelect}
-        />
-      </Box>
+      <AudioPlayer
+        skip={skip}
+        tracks={tracks}
+        trackIndex={trackIndex}
+        isFirstSong={isFirstSong}
+        handleSelect={handleAudioSelect}
+      />
     </Page>
   );
 }

@@ -20,11 +20,11 @@ export default function App() {
 
   return (
     <Layout onTabSelect={toTab}>
-      {appState.activeTabIndex === 4 && <Home />}
-      {appState.activeTabIndex === 3 && <Music />}
+      {appState.activeTabIndex === 0 && <Home />}
+      {appState.activeTabIndex === 1 && <Music />}
       {appState.activeTabIndex === 2 && <Videos />}
-      {appState.activeTabIndex === 1 && <Photos />}
-      {appState.activeTabIndex === 0 && <Contact />}
+      {appState.activeTabIndex === 3 && <Photos />}
+      {appState.activeTabIndex === 4 && <Contact />}
     </Layout>
   );
 }

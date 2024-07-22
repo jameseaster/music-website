@@ -1,6 +1,8 @@
 // Imports
 import { Box } from "@mui/material";
-import SpeedDialMenu from "./SpeedDialMenu";
+import Navigation from "./Navigation";
+import ColorModeButton from "./ColorModeButton";
+import Typography from "@mui/material/Typography";
 
 // Types
 export interface LayoutProps {
@@ -25,10 +27,30 @@ export default function Layout(props: LayoutProps) {
         bgcolor: "background.default",
       }}
     >
+      <Box
+        sx={{
+          my: 3,
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Typography
+          variant={"h6"}
+          sx={{
+            mb: 1,
+            textAlign: "center",
+            fontWeight: "light",
+            letterSpacing: "0.5rem",
+          }}
+        >
+          JAMES EASTER
+        </Typography>
+        <Navigation onTabSelect={onTabSelect} />
+      </Box>
       {children}
-      {/* Nav Menu */}
-      <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
-        <SpeedDialMenu onTabSelect={onTabSelect} />
+      <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+        <ColorModeButton />
       </Box>
     </Box>
   );

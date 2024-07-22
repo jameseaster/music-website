@@ -1,7 +1,7 @@
 // Imports
 import { Howl } from "howler";
 import Playlist from "./Playlist";
-import Slide from "@mui/material/Slide";
+import Fade from "@mui/material/Fade";
 import Slider from "@mui/material/Slider";
 import { Box, useTheme } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
@@ -140,7 +140,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     <Box
       sx={{
         p: 2,
-        mb: 6,
+        mb: 2,
         display: "flex",
         position: "relative",
         borderRadius: "20px",
@@ -152,8 +152,8 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     >
       <IconButton
         size="small"
-        sx={{ position: "absolute", right: 12, top: 8, color: "white" }}
         onClick={togglePlaylistView}
+        sx={{ position: "absolute", right: 12, top: 8, color: "white" }}
       >
         <QueueMusicIcon sx={{ fontSize: "22px" }} />
       </IconButton>
@@ -170,11 +170,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
             <img
               src={image}
               alt={`track artwork for ${title} by ${artist}`}
-              style={{
-                width: "180px",
-                height: "180px",
-                borderRadius: "90px",
-              }}
+              style={{ width: "180px", height: "180px", borderRadius: "90px" }}
             />
           </Box>
           {loading ? (
@@ -231,21 +227,17 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         </Box>
       )}
       {viewPlaylist && (
-        <Slide
-          in={viewPlaylist}
-          container={containerRef.current}
-          easing={theme.transitions.easing.easeOut}
-        >
+        <Fade in={viewPlaylist} easing={theme.transitions.easing.easeOut}>
           <Box sx={{ p: 0, zIndex: 2, width: 212 }}>
             <Playlist
-              list={tracks}
               height={377}
+              list={tracks}
               selectedIndex={trackIndex}
               handleSelect={handleSelect}
               closePlaylist={() => setViewPlaylist(false)}
             />
           </Box>
-        </Slide>
+        </Fade>
       )}
     </Box>
   );
