@@ -1,14 +1,15 @@
-// React Imports
+// Imports
 import { Howl } from "howler";
 import Playlist from "./Playlist";
-import { Box } from "@mui/material";
+import Slide from "@mui/material/Slide";
 import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
+import { Box, useTheme } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import { useState, useEffect, useRef } from "react";
 import AudioControls from "../components/AudioControls";
+import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import CircularProgress from "@mui/material/CircularProgress";
-import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
 
 // Types
 export interface Track {
@@ -17,6 +18,7 @@ export interface Track {
   color: string;
   artist: string;
   audioSrc: string;
+  duration: number;
 }
 export interface AudioPlayerProps {
   tracks: Track[];
@@ -37,17 +39,20 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   const { skip, tracks, trackIndex, handleSelect, isFirstSong } = props;
 
   // State
-  const [duration, setDuration] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [trackProgress, setTrackProgress] = useState(0);
   const [viewPlaylist, setViewPlaylist] = useState(false);
 
+  // Hooks
+  const theme = useTheme();
+
   // Constants
-  const { title, artist, /* color,*/ image, audioSrc } = tracks[trackIndex];
+  const { title, artist, duration, image, audioSrc } = tracks[trackIndex];
 
   // Refs
   const intervalRef = useRef(0);
+  const containerRef = useRef<HTMLElement>(null);
   const audioRef = useRef(new Howl({ src: [audioSrc], autoplay: false }));
 
   // Check for duration to activate scrub feature
@@ -56,12 +61,11 @@ export default function AudioPlayer(props: AudioPlayerProps) {
       if (audioRef.current.duration() === 0) {
         setTimeout(() => checkForDuration(), 250);
       } else {
-        setDuration(audioRef.current.duration());
         setTimeout(() => setLoading(false), 500);
       }
     }
     checkForDuration();
-  }, []);
+  }, [trackIndex]);
 
   // Play Track if isPlaying is true
   useEffect(() => {
@@ -70,6 +74,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
       startTimer();
     } else {
       audioRef.current.pause();
+      clearInterval(intervalRef.current);
     }
   }, [isPlaying]); // eslint-disable-line
 
@@ -99,29 +104,36 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   }, [audioSrc]); // eslint-disable-line
 
   const startTimer = () => {
-    // Clear any timers already running
     clearInterval(intervalRef.current);
-    const current = Number(audioRef.current.seek());
-    const length = Number(audioRef.current.duration());
     intervalRef.current = window.setInterval(() => {
-      if (current !== 0 && current === length) {
+      const current = Number(audioRef.current.seek());
+      if (Math.ceil(current) === duration) {
         skip("next");
       } else {
         const progress = Number(audioRef.current.seek());
         setTrackProgress(progress);
       }
-    }, 1000);
+    }, 500);
   };
 
   const onScrub = (value: number) => {
-    // Clear any timers already running
     clearInterval(intervalRef.current);
     audioRef.current.seek(value);
     setTrackProgress(value);
+    if (!isPlaying) {
+      setIsPlaying(true);
+    }
+    startTimer();
   };
 
   const togglePlaylistView = () => {
     setViewPlaylist((v) => !v);
+  };
+
+  const formatDuration = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.round(time % 60);
+    return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
   };
 
   return (
@@ -130,6 +142,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         p: 2,
         mb: 6,
         display: "flex",
+        position: "relative",
         borderRadius: "20px",
         flexDirection: "column",
         border: "solid 1px white",
@@ -137,77 +150,102 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         backgroundColor: (theme) => theme.palette.primary.main,
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
+      <IconButton
+        size="small"
+        sx={{ position: "absolute", right: 12, top: 8, color: "white" }}
+        onClick={togglePlaylistView}
       >
+        <QueueMusicIcon sx={{ fontSize: "22px" }} />
+      </IconButton>
+      {!viewPlaylist && (
         <Box
-          sx={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
+          ref={containerRef}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
         >
-          <IconButton onClick={togglePlaylistView}>
-            <FormatListBulletedOutlinedIcon style={{ fontSize: "18px" }} />
-          </IconButton>
-        </Box>
-        <Box sx={{ mx: 2, mb: 2 }}>
-          <img
-            src={image}
-            alt={`track artwork for ${title} by ${artist}`}
-            style={{
-              width: "180px",
-              height: "180px",
-              borderRadius: "90px",
-            }}
-          />
-        </Box>
-        {loading ? (
-          <Box
-            sx={{
-              height: "126px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <CircularProgress size="36px" sx={{ color: "white" }} />
+          <Box sx={{ mx: 2, my: 2 }}>
+            <img
+              src={image}
+              alt={`track artwork for ${title} by ${artist}`}
+              style={{
+                width: "180px",
+                height: "180px",
+                borderRadius: "90px",
+              }}
+            />
           </Box>
-        ) : (
-          <>
-            <Typography
-              variant="h6"
-              sx={{ color: "white", fontWeight: "bold" }}
+          {loading ? (
+            <Box
+              sx={{
+                height: "158px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
-              {title}
-            </Typography>
-            <Typography sx={{ color: "white" }}>{artist}</Typography>
-            <AudioControls
-              isPlaying={isPlaying}
-              onPlayPauseClick={setIsPlaying}
-              onPrevClick={() => skip("prev")}
-              onNextClick={() => skip("next")}
-            />
-            <Slider
-              min={0}
-              step={1}
-              max={duration}
-              value={trackProgress}
-              sx={{ width: "80%", color: "white" }}
-              onChange={(_, value) => onScrub(Number(value))}
-            />
-          </>
-        )}
-      </Box>
-      {viewPlaylist && (
-        <Box sx={{ p: 1, mt: 3 }}>
-          <Playlist
-            height={320}
-            list={tracks}
-            selectedIndex={trackIndex}
-            handleSelect={handleSelect}
-          />
+              <CircularProgress size="36px" sx={{ color: "white" }} />
+            </Box>
+          ) : (
+            <>
+              <Typography
+                variant="h6"
+                sx={{ color: "white", fontWeight: "bold" }}
+              >
+                {title}
+              </Typography>
+              <Typography sx={{ color: "white", mb: 1 }}>{artist}</Typography>
+              <AudioControls
+                isPlaying={isPlaying}
+                onPlayPauseClick={setIsPlaying}
+                onPrevClick={() => skip("prev")}
+                onNextClick={() => skip("next")}
+              />
+              <Box
+                sx={{
+                  my: 0.5,
+                  width: "90%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="caption" sx={{ color: "white" }}>
+                  {formatDuration(audioRef.current.seek())}
+                </Typography>
+                <Slider
+                  min={0}
+                  step={1}
+                  max={duration}
+                  value={trackProgress}
+                  onChange={(_, value) => onScrub(Number(value))}
+                  sx={{ color: "white", mx: 2, flexGrow: 1 }}
+                />
+                <Typography variant="caption" sx={{ color: "white" }}>
+                  {formatDuration(duration)}
+                </Typography>
+              </Box>
+            </>
+          )}
         </Box>
+      )}
+      {viewPlaylist && (
+        <Slide
+          in={viewPlaylist}
+          container={containerRef.current}
+          easing={theme.transitions.easing.easeOut}
+        >
+          <Box sx={{ p: 0, zIndex: 2, width: 212 }}>
+            <Playlist
+              list={tracks}
+              height={377}
+              selectedIndex={trackIndex}
+              handleSelect={handleSelect}
+              closePlaylist={() => setViewPlaylist(false)}
+            />
+          </Box>
+        </Slide>
       )}
     </Box>
   );

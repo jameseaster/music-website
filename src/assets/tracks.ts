@@ -9,6 +9,7 @@ export const tracks = [
     audioSrc: "/tracks/Day_Dreamer.m4a",
     image: photo,
     color: "white",
+    duration: 82,
   },
   {
     title: "Ritual",
@@ -16,6 +17,7 @@ export const tracks = [
     audioSrc: "/tracks/Ritual.m4a",
     image: photo,
     color: "blue",
+    duration: 80,
   },
   {
     title: "Should I Care",
@@ -23,6 +25,7 @@ export const tracks = [
     audioSrc: "/tracks/Should_I_Care.m4a",
     image: photo,
     color: "red",
+    duration: 49,
   },
   {
     title: "Migration",
@@ -30,6 +33,7 @@ export const tracks = [
     audioSrc: "/tracks/Migration.m4a",
     image: photo,
     color: "purple",
+    duration: 51,
   },
   // {
   //   title: "Self Talk",
@@ -37,5 +41,6 @@ export const tracks = [
   //   audioSrc: "/tracks/Self_Talk.m4a",
   //   image: photo,
   //   color: "purple",
+  //   duration: 0
   // },
 ];

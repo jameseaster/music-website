@@ -29,11 +29,11 @@ export default function AudioControls(props: AudioControlsProps) {
       </IconButton>
       {isPlaying ? (
         <IconButton onClick={() => onPlayPauseClick(false)}>
-          <Pause />
+          <Pause sx={{ fontSize: "40px" }} />
         </IconButton>
       ) : (
         <IconButton onClick={() => onPlayPauseClick(true)}>
-          <Play />
+          <Play sx={{ fontSize: "40px" }} />
         </IconButton>
       )}
       <IconButton onClick={onNextClick}>
