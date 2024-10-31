@@ -1,6 +1,6 @@
 // Imports
-import { Box } from "@mui/material";
 import Page from "../components/Page";
+import ContactForm from "../components/ContactForm";
 
 /**
  * Contact Page
@@ -8,7 +8,7 @@ import Page from "../components/Page";
 export default function Contact() {
   return (
     <Page>
-      <Box sx={{ mt: 4 }}>Contact</Box>
+      <ContactForm />
     </Page>
   );
 }

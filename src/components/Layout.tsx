@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import Navigation from "./Navigation";
 import ColorModeButton from "./ColorModeButton";
 import Typography from "@mui/material/Typography";
+import LoadingOverlay from "./LoadingOverlay";
 
 // Types
 export interface LayoutProps {
@@ -18,47 +19,50 @@ export default function Layout(props: LayoutProps) {
   const { children, onTabSelect } = props;
 
   return (
-    <Box
-      component="main"
-      sx={{
-        display: "flex",
-        height: "100vh",
-        flexDirection: "column",
-        bgcolor: "background.default",
-      }}
-    >
+    <>
+      <LoadingOverlay />
       <Box
+        component="main"
         sx={{
-          my: 3,
           display: "flex",
-          alignItems: "center",
+          height: "100vh",
           flexDirection: "column",
+          bgcolor: "background.default",
         }}
       >
-        <Typography
-          variant={"h6"}
+        <Box
           sx={{
-            mb: 1,
-            textAlign: "center",
-            fontWeight: "light",
-            letterSpacing: "0.5rem",
+            my: 3,
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
           }}
         >
-          JAMES EASTER
-        </Typography>
-        <Navigation onTabSelect={onTabSelect} />
+          <Typography
+            variant={"h6"}
+            sx={{
+              mb: 1,
+              textAlign: "center",
+              fontWeight: "light",
+              letterSpacing: "0.5rem",
+            }}
+          >
+            JAMES EASTER
+          </Typography>
+          <Navigation onTabSelect={onTabSelect} />
+        </Box>
+        {children}
+        <Box
+          sx={{
+            width: "100%",
+            height: "70px",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <ColorModeButton />
+        </Box>
       </Box>
-      {children}
-      <Box
-        sx={{
-          width: "100%",
-          height: "70px",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <ColorModeButton />
-      </Box>
-    </Box>
+    </>
   );
 }
