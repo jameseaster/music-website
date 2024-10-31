@@ -1,5 +1,12 @@
 // Import version number
 import packageJson from "../../package.json";
+// Images
+import newLife from "../assets/images/3x4-new-life.png";
+import strat from "../assets/images/3x4-ochancey06.jpg";
+import prs from "../assets/images/3x4-ochancey01.jpg";
+import hat from "../assets/images/3x4-ochancey04.jpg";
+import color from "../assets/images/3x4-ochancey03.jpg";
+import jazz from "../assets/images/3x4-gsg04.jpg";
 
 // Global State Actions
 interface ActionType {
@@ -16,11 +23,24 @@ interface AppConstants {
   VERSION: string;
   DEFAULT_THEME: "dark" | "light";
   DRAWER_WIDTH: number;
+  BOX_SHADOW: string
 }
 const APP_CONSTANTS: AppConstants = {
   VERSION: `v${packageJson.version}`,
   DEFAULT_THEME: "light",
   DRAWER_WIDTH: 265,
+  BOX_SHADOW: "0 28px 28px rgba(0, 0, 0, .7)"
 };
+
+// Constants
+export const PHOTOS = [
+  { img: jazz, title: "jazz" },
+  { img: prs, title: "prs" },
+  { img: strat, title: "strat" },
+  { img: hat, title: "hat" },
+  { img: newLife, title: "new-life" },
+  { img: color, title: "WF-color" },
+];
+
 
 export { ACTIONS, APP_CONSTANTS };

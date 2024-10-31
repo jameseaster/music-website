@@ -49,7 +49,14 @@ export default function Layout(props: LayoutProps) {
         <Navigation onTabSelect={onTabSelect} />
       </Box>
       {children}
-      <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+      <Box
+        sx={{
+          width: "100%",
+          height: "70px",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
         <ColorModeButton />
       </Box>
     </Box>

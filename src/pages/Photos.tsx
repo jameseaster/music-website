@@ -1,6 +1,6 @@
 // Imports
-import { Box } from "@mui/material";
 import Page from "../components/Page";
+import ImageList from "../components/ImageList";
 
 /**
  * Photos Page
@@ -8,7 +8,7 @@ import Page from "../components/Page";
 export default function Photos() {
   return (
     <Page>
-      <Box sx={{ mt: 4 }}>Photos</Box>
+      <ImageList />
     </Page>
   );
 }
