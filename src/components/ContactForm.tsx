@@ -1,5 +1,7 @@
 // Imports
+import axios from "axios";
 import { useState } from "react";
+import validator from "validator";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -10,6 +12,7 @@ import { ACTIONS, APP_CONSTANTS } from "../utils/constants";
 
 // Constants
 const defaultFormState = { name: "", email: "", message: "" };
+const initialValidation = { name: true, email: true, message: true };
 
 /**
  * Allows user to send message
@@ -20,28 +23,43 @@ export default function ContactForm() {
 
   // Local State
   const [form, setForm] = useState(defaultFormState);
+  const [validated, setValidated] = useState(initialValidation);
 
   const handleChange = (key: string, value: string) => {
     setForm((form) => ({ ...form, [key]: value }));
   };
 
+  // Send message and notify user of result
   const sendMessage = async () => {
-    setLoading(true);
-    try {
-      // MOCK AWAIT: DEVELOPMENT ONLY (REMOVE AFTER TESTING) //
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      console.log(form);
-      setForm(defaultFormState);
-      // MOCK AWAIT: DEVELOPMENT ONLY (REMOVE AFTER TESTING) //
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
+    const name = form.name.length > 1;
+    const email = validator.isEmail(form.email);
+    const message = form.message.length > 10;
+    setValidated({ name, email, message });
+    if (name && email && message && validated) {
+      setLoading(true);
+      try {
+        // Send message to email
+        const url = import.meta.env.VITE_EMAIL_FN || "";
+        const result = await axios.post(url, form);
+        // Check for errors
+        if (result.data.error) throw new Error(result.data.message);
+        // Create notification
+        // setSnack({ open: true, severity: "success", message: "Message sent!" });
+        console.log("success");
+        // Clear form data
+        setForm(defaultFormState);
+      } catch (err) {
+        // Log error
+        console.error(err);
+        // setSnack({ open: true, severity: "error", message: "Failed to send" });
+      } finally {
+        // Resolve loading
+        setLoading(false);
+      }
     }
   };
 
   const setLoading = (loading: boolean) => {
-    console.log("this ran", loading);
     dispatchAppState({
       type: ACTIONS.UPDATE_SHOW_LOADING_OVERLAY,
       payload: { showLoadingOverlay: loading },
@@ -68,6 +86,7 @@ export default function ContactForm() {
             size="small"
             name="name"
             label="Name"
+            value={form.name}
             onChange={(e) => handleChange("name", e.target.value)}
           />
           <TextField
@@ -75,6 +94,7 @@ export default function ContactForm() {
             size="small"
             name="email"
             label="Email"
+            value={form.email}
             onChange={(e) => handleChange("email", e.target.value)}
           />
           <TextField
@@ -84,6 +104,7 @@ export default function ContactForm() {
             size="small"
             name="message"
             label="Message"
+            value={form.message}
             onChange={(e) => handleChange("message", e.target.value)}
           />
           <Button
