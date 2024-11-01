@@ -1,15 +1,14 @@
 // Imports
 import axios from "axios";
-import { useState } from "react";
 import validator from "validator";
-import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { ACTIONS, APP_CONSTANTS } from "../utils/constants";
 import { useSnacks } from "../hooks/useSnacks";
 import TextField from "@mui/material/TextField";
-import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { useMemo, useEffect, useState } from "react";
 import { useAppState } from "../context/Providers/AppState";
-import { ACTIONS, APP_CONSTANTS } from "../utils/constants";
 
 // Constants
 const defaultFormState = { name: "", email: "", message: "" };
@@ -26,11 +25,21 @@ export default function ContactForm() {
   const [form, setForm] = useState(defaultFormState);
   const [validated, setValidated] = useState(initialValidation);
 
+  const disableSend = useMemo(() => {
+    return form?.message?.length < 5 || !form.email || !form.name;
+  }, [form]);
+
   // Hooks
   const { handleSnack } = useSnacks();
 
   const handleChange = (key: string, value: string) => {
-    setForm((form) => ({ ...form, [key]: value }));
+    if (key === "message" && value.length <= 250) {
+      setForm((form) => ({ ...form, [key]: value }));
+    } else if (key === "email" && value.length <= 40) {
+      setForm((form) => ({ ...form, [key]: value }));
+    } else if (key === "name" && value.length <= 40) {
+      setForm((form) => ({ ...form, [key]: value }));
+    }
   };
 
   // Send message and notify user of result
@@ -63,57 +72,86 @@ export default function ContactForm() {
     });
   };
 
+  // Check Contact Form Name Validation
+  useEffect(() => {
+    if (!validated.name && form.name.length > 2) {
+      setValidated((v) => ({ ...v, name: true }));
+    }
+  }, [form.name, validated.name]);
+
+  // Check Contact Form Email Validation
+  useEffect(() => {
+    if (!validated.email && validator.isEmail(form.email)) {
+      setValidated((v) => ({ ...v, email: true }));
+    }
+  }, [form.email, validated.email]);
+
+  // Check Contact Form Message Validation
+  useEffect(() => {
+    if (!validated.message && form.message.length > 9) {
+      setValidated((v) => ({ ...v, message: true }));
+    }
+  }, [form.message, validated.message]);
+
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        width: {
-          xs: "90vw",
-          sm: "325px",
-          maxWidth: "325px",
-          borderRadius: "20px",
-          boxShadow: APP_CONSTANTS.BOX_SHADOW,
-        },
-      }}
-    >
-      <CardContent sx={{ p: { xs: 2, sm: 4 } }}>
-        <Stack spacing={2} sx={{ my: 1 }}>
-          <TextField
-            required
-            size="small"
-            name="name"
-            label="Name"
-            value={form.name}
-            onChange={(e) => handleChange("name", e.target.value)}
-          />
-          <TextField
-            required
-            size="small"
-            name="email"
-            label="Email"
-            value={form.email}
-            onChange={(e) => handleChange("email", e.target.value)}
-          />
-          <TextField
-            rows={8}
-            required
-            multiline
-            size="small"
-            name="message"
-            label="Message"
-            value={form.message}
-            onChange={(e) => handleChange("message", e.target.value)}
-          />
-          <Button
-            variant="outlined"
-            onClick={sendMessage}
-            disabled={form?.message?.length < 5 || !form.email || !form.name}
-            sx={{ textTransform: "none" }}
-          >
-            Send
-          </Button>
-        </Stack>
-      </CardContent>
-    </Card>
+    <Stack spacing={2} sx={{ mt: 2, width: { xs: "70vw", sm: "315px" } }}>
+      <TextField
+        required
+        size="small"
+        name="name"
+        label="Name"
+        value={form.name}
+        variant="outlined"
+        error={!validated.name}
+        onChange={(e) => handleChange("name", e.target.value)}
+      />
+      <TextField
+        required
+        size="small"
+        name="email"
+        label="Email"
+        variant="outlined"
+        value={form.email}
+        error={!validated.email}
+        onChange={(e) => handleChange("email", e.target.value)}
+      />
+      <Stack>
+        <TextField
+          rows={8}
+          required
+          multiline
+          size="small"
+          name="message"
+          label="Message"
+          variant="outlined"
+          value={form.message}
+          error={!validated.message}
+          onChange={(e) => handleChange("message", e.target.value)}
+        />
+        <Typography
+          variant="caption"
+          sx={{
+            mt: 0.5,
+            mr: 0.5,
+            textAlign: "end",
+            color: (theme) => theme.palette.text.secondary,
+          }}
+        >
+          {form.message.length} / 250
+        </Typography>
+      </Stack>
+
+      <Button
+        variant="contained"
+        onClick={sendMessage}
+        disabled={disableSend}
+        sx={{
+          textTransform: "none",
+          border: disableSend ? "" : APP_CONSTANTS.BORDER,
+        }}
+      >
+        Send
+      </Button>
+    </Stack>
   );
 }
