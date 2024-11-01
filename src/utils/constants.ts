@@ -24,12 +24,14 @@ interface AppConstants {
   DEFAULT_THEME: "dark" | "light";
   DRAWER_WIDTH: number;
   BOX_SHADOW: string
+  BORDER: string
 }
 const APP_CONSTANTS: AppConstants = {
   VERSION: `v${packageJson.version}`,
   DEFAULT_THEME: "light",
   DRAWER_WIDTH: 265,
-  BOX_SHADOW: "0 28px 28px rgba(0, 0, 0, .7)"
+  BOX_SHADOW: "0 28px 28px rgba(0, 0, 0, .7)",
+  BORDER: "1px solid rgba(255, 255, 255, 0.23)"
 };
 
 // Constants
