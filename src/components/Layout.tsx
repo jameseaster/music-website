@@ -32,8 +32,9 @@ export default function Layout(props: LayoutProps) {
       >
         <Box
           sx={{
-            my: 3,
+            mt: 3,
             display: "flex",
+            mb: { xs: 0, sm: 3 },
             alignItems: "center",
             flexDirection: "column",
           }}
