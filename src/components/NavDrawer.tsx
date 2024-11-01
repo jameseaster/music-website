@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import List from "@mui/material/List";
 import Drawer from "@mui/material/Drawer";
 import ListItem from "@mui/material/ListItem";
-import ColorModeSwitch from "./ColorModeSwitch";
+import ColorModeButton from "./ColorModeButton";
 import { APP_CONSTANTS } from "../utils/constants";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -60,7 +60,7 @@ export default function NavDrawer(props: NavDrawerProps) {
     return (
       <Box>
         <List>
-          <ColorModeSwitch />
+          <ColorModeButton />
         </List>
       </Box>
     );
