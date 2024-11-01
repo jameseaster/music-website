@@ -5,6 +5,7 @@ import validator from "validator";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { useSnacks } from "../hooks/useSnacks";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import { useAppState } from "../context/Providers/AppState";
@@ -25,6 +26,9 @@ export default function ContactForm() {
   const [form, setForm] = useState(defaultFormState);
   const [validated, setValidated] = useState(initialValidation);
 
+  // Hooks
+  const { handleSnack } = useSnacks();
+
   const handleChange = (key: string, value: string) => {
     setForm((form) => ({ ...form, [key]: value }));
   };
@@ -38,22 +42,15 @@ export default function ContactForm() {
     if (name && email && message && validated) {
       setLoading(true);
       try {
-        // Send message to email
         const url = import.meta.env.VITE_EMAIL_FN || "";
         const result = await axios.post(url, form);
-        // Check for errors
         if (result.data.error) throw new Error(result.data.message);
-        // Create notification
-        // setSnack({ open: true, severity: "success", message: "Message sent!" });
-        console.log("success");
-        // Clear form data
+        handleSnack({ success: "Message sent!" });
         setForm(defaultFormState);
       } catch (err) {
-        // Log error
         console.error(err);
-        // setSnack({ open: true, severity: "error", message: "Failed to send" });
+        handleSnack({ error: "Unable to send message" });
       } finally {
-        // Resolve loading
         setLoading(false);
       }
     }

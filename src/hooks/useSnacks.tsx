@@ -54,5 +54,5 @@ export const useSnacks = () => {
     else if (error) makeSnack("error", error, timing || 6000);
   };
 
-  return { makeSnack, handleSnack };
+  return { handleSnack };
 };
