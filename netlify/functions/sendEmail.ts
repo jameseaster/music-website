@@ -21,7 +21,7 @@ export const handler = async ({ httpMethod, body }) => {
       };
     }
     // Construct email data
-    const url = process.env.REACT_APP_EMAIL_URL || "";
+    const url = process.env.VITE_EMAIL_URL || "";
     const emailData = {
       template_params: {
         from_name: name,
@@ -29,10 +29,10 @@ export const handler = async ({ httpMethod, body }) => {
         message: message,
         to_name: "James",
       },
-      user_id: process.env.REACT_APP_USER_ID,
-      service_id: process.env.REACT_APP_SERVICE_ID,
-      template_id: process.env.REACT_APP_TEMPLATE_ID,
-      accessToken: process.env.REACT_APP_ACCESS_TOKEN,
+      user_id: process.env.VITE_USER_ID,
+      service_id: process.env.VITE_SERVICE_ID,
+      template_id: process.env.VITE_TEMPLATE_ID,
+      accessToken: process.env.VITE_ACCESS_TOKEN,
     };
     // Send email
     const response = await axios.post(url, emailData);
