@@ -32,7 +32,7 @@ export default function ImageListItem(props: ImageListItemProps) {
       onClick={handleClick}
       sx={{
         borderRadius: "20px",
-        border: APP_CONSTANTS.BORDER,
+        border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
       }}
     >
       <ImageListItemMui

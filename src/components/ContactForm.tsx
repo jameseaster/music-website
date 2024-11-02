@@ -3,12 +3,14 @@ import axios from "axios";
 import validator from "validator";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { ACTIONS, APP_CONSTANTS } from "../utils/constants";
+import Card from "@mui/material/Card";
 import { useSnacks } from "../hooks/useSnacks";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import CardContent from "@mui/material/CardContent";
 import { useMemo, useEffect, useState } from "react";
 import { useAppState } from "../context/Providers/AppState";
+import { ACTIONS, APP_CONSTANTS } from "../utils/constants";
 
 // Constants
 const defaultFormState = { name: "", email: "", message: "" };
@@ -94,64 +96,78 @@ export default function ContactForm() {
   }, [form.message, validated.message]);
 
   return (
-    <Stack spacing={2} sx={{ mt: 2, width: { xs: "70vw", sm: "315px" } }}>
-      <TextField
-        required
-        size="small"
-        name="name"
-        label="Name"
-        value={form.name}
-        variant="outlined"
-        error={!validated.name}
-        onChange={(e) => handleChange("name", e.target.value)}
-      />
-      <TextField
-        required
-        size="small"
-        name="email"
-        label="Email"
-        variant="outlined"
-        value={form.email}
-        error={!validated.email}
-        onChange={(e) => handleChange("email", e.target.value)}
-      />
-      <Stack>
-        <TextField
-          rows={8}
-          required
-          multiline
-          size="small"
-          name="message"
-          label="Message"
-          variant="outlined"
-          value={form.message}
-          error={!validated.message}
-          onChange={(e) => handleChange("message", e.target.value)}
-        />
-        <Typography
-          variant="caption"
+    <Card
+      sx={{
+        p: 1,
+        mt: 2,
+        borderRadius: "20px",
+        boxShadow: APP_CONSTANTS.BOX_SHADOW,
+        border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
+      }}
+    >
+      <CardContent>
+        <Stack spacing={3} sx={{ width: { xs: "65vw", sm: "250px" } }}>
+          <TextField
+            required
+            size="small"
+            name="name"
+            label="Name"
+            value={form.name}
+            variant="outlined"
+            error={!validated.name}
+            onChange={(e) => handleChange("name", e.target.value)}
+          />
+          <TextField
+            required
+            size="small"
+            name="email"
+            label="Email"
+            variant="outlined"
+            value={form.email}
+            error={!validated.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+          />
+          <Stack>
+            <TextField
+              rows={8}
+              required
+              multiline
+              size="small"
+              name="message"
+              label="Message"
+              variant="outlined"
+              value={form.message}
+              error={!validated.message}
+              onChange={(e) => handleChange("message", e.target.value)}
+            />
+            <Typography
+              variant="caption"
+              sx={{
+                mt: 0.5,
+                mr: 0.5,
+                textAlign: "end",
+                color: (theme) => theme.palette.text.secondary,
+              }}
+            >
+              {form.message.length} / 250
+            </Typography>
+          </Stack>
+        </Stack>
+        <Button
+          fullWidth
+          variant="contained"
+          onClick={sendMessage}
+          disabled={disableSend}
           sx={{
             mt: 0.5,
-            mr: 0.5,
-            textAlign: "end",
-            color: (theme) => theme.palette.text.secondary,
+            textTransform: "none",
+            border: (theme) =>
+              disableSend ? "" : `0.5px solid ${theme.palette.text.secondary}`,
           }}
         >
-          {form.message.length} / 250
-        </Typography>
-      </Stack>
-
-      <Button
-        variant="contained"
-        onClick={sendMessage}
-        disabled={disableSend}
-        sx={{
-          textTransform: "none",
-          border: disableSend ? "" : APP_CONSTANTS.BORDER,
-        }}
-      >
-        Send
-      </Button>
-    </Stack>
+          Send
+        </Button>
+      </CardContent>
+    </Card>
   );
 }

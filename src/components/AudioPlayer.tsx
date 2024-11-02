@@ -146,9 +146,9 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         position: "relative",
         borderRadius: "20px",
         flexDirection: "column",
-        border: APP_CONSTANTS.BORDER,
         boxShadow: APP_CONSTANTS.BOX_SHADOW,
         backgroundColor: (theme) => theme.palette.primary.main,
+        border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
       }}
     >
       <IconButton
