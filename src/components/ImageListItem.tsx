@@ -28,8 +28,14 @@ export default function ImageListItem(props: ImageListItemProps) {
   const { img, title, handleClick } = props;
 
   return (
-    <AnimatedTrail open={true} endHeight={400}>
-      <ImageButton onClick={handleClick}>
+    <AnimatedTrail open={true} endHeight={405}>
+      <ImageButton
+        onClick={handleClick}
+        sx={{
+          borderRadius: "4px",
+          border: (theme) => `1px solid ${theme.palette.text.secondary}`,
+        }}
+      >
         <ImageListItemMui key={img}>
           <img
             alt={title}

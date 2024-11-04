@@ -53,7 +53,13 @@ export default function Videos() {
   return (
     <Page endHeight={600}>
       <>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box
+          sx={{
+            mt: -1,
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           {Object.keys(allVideos).map((videoType) => (
             <Button
               disableRipple
@@ -67,7 +73,8 @@ export default function Videos() {
                 textTransform: "none",
                 transition: "0.25s all ease-in",
                 transform: videoType === selectedVideoType ? "scale(1.3)" : "",
-                letterSpacing: videoType === selectedVideoType ? "0.05em" : "0",
+                letterSpacing:
+                  videoType === selectedVideoType ? "0.1em" : "0.06em",
                 color: (theme) =>
                   theme.palette.mode === "light"
                     ? ""
@@ -87,8 +94,7 @@ export default function Videos() {
         >
           <CardContent sx={{ p: 0, "&:last-child": { pb: 0 } }}>
             <VideoPlayer url={selectedVideo?.url || ""} />
-
-            <FormControl fullWidth sx={{ px: 8, my: 1 }}>
+            <FormControl fullWidth sx={{ px: { xs: 0.5, sm: 2 }, my: 1 }}>
               <Select
                 disableUnderline
                 variant="standard"

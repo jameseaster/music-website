@@ -94,7 +94,10 @@ export default function ContactForm() {
   }, [form.message, validated.message]);
 
   return (
-    <Stack spacing={3} sx={{ p: 1, width: { xs: "65vw", sm: "250px" } }}>
+    <Stack
+      spacing={3}
+      sx={{ mt: -1, p: 1, width: { xs: "65vw", sm: "250px" } }}
+    >
       <Typography
         sx={{
           textAlign: "center",

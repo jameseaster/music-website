@@ -19,14 +19,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <>
       <LoadingOverlay />
-      <Box
-        component="main"
-        sx={{
-          display: "flex",
-          height: "100vh",
-          flexDirection: "column",
-        }}
-      >
+      <Box component="main" sx={{ display: "flex", flexDirection: "column" }}>
         <Box
           sx={{
             mt: 1,
