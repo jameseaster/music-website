@@ -2,7 +2,6 @@
 import { Box } from "@mui/material";
 import ReactPlayer from "react-player/lazy";
 import { SxProps, useTheme } from "@mui/system";
-import { APP_CONSTANTS } from "../utils/constants";
 
 // Types
 export interface VideoPlayerProps {
@@ -21,13 +20,12 @@ export default function VideoPlayer(props: VideoPlayerProps) {
   return (
     <Box
       sx={{
-        mt: 1,
         display: "flex",
         position: "relative",
         alignItems: "center",
         justifyContent: "center",
-        width: { xs: "320px", sm: "592px", md: "640px" },
-        height: { xs: "180px", sm: "333px", md: "360px" },
+        width: { xs: "100%", sm: "512px", md: "640px" },
+        height: { xs: "180px", sm: "288px", md: "360px" },
         ...sx,
       }}
     >
@@ -40,10 +38,8 @@ export default function VideoPlayer(props: VideoPlayerProps) {
           top: 0,
           left: 0,
           overflow: "hidden",
-          borderRadius: "20px",
           position: "absolute",
-          boxShadow: APP_CONSTANTS.BOX_SHADOW,
-          border: `0.5px solid ${theme.palette.text.secondary}`,
+          borderBottom: `1px solid ${theme.palette.text.secondary}`,
         }}
       />
     </Box>
