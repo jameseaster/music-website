@@ -27,7 +27,7 @@ interface AppConstants {
 }
 const APP_CONSTANTS: AppConstants = {
   VERSION: `v${packageJson.version}`,
-  DEFAULT_THEME: "light",
+  DEFAULT_THEME: "dark",
   DRAWER_WIDTH: 265,
   BORDER: "1px solid rgba(255, 255, 255, 0.23)"
 };
