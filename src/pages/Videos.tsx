@@ -51,49 +51,48 @@ export default function Videos() {
   }, []);
 
   return (
-    <Page endHeight={550}>
-      <Card
-        sx={{
-          mt: 2,
-          borderRadius: "20px",
-          backgroundColor: (theme) => theme.palette.primary.main,
-          border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
-        }}
-      >
-        <CardContent sx={{ p: 0, pb: 0, "&:last-child": { pb: 0 } }}>
-          <Box sx={{ mt: 1 }}>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              {Object.keys(allVideos).map((videoType) => (
-                <Button
-                  variant="text"
-                  key={videoType}
-                  onClick={() => handleClick(videoType)}
-                  sx={{
-                    mx: 1,
-                    color: "white",
-                    width: "100px",
-                    textTransform: "none",
-                    fontWeight: videoType === selectedVideoType ? "bolder" : "",
-                    transform:
-                      videoType === selectedVideoType ? "scale(1.2)" : "",
-                  }}
-                >
-                  {videoType}
-                </Button>
-              ))}
-            </Box>
+    <Page endHeight={600}>
+      <>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          {Object.keys(allVideos).map((videoType) => (
+            <Button
+              disableRipple
+              variant="text"
+              key={videoType}
+              onClick={() => handleClick(videoType)}
+              sx={{
+                mx: 1,
+                width: "100px",
+                textTransform: "none",
+                transition: "0.25s all ease-in",
+                transform: videoType === selectedVideoType ? "scale(1.3)" : "",
+                letterSpacing: videoType === selectedVideoType ? "0.05em" : "0",
+              }}
+            >
+              {videoType}
+            </Button>
+          ))}
+        </Box>
+        <Card
+          sx={{
+            borderRadius: "20px",
+            backgroundColor: (theme) => theme.palette.primary.main,
+            border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
+          }}
+        >
+          <CardContent sx={{ p: 0, "&:last-child": { pb: 0 } }}>
+            <VideoPlayer url={selectedVideo?.url || ""} />
 
-            <FormControl fullWidth sx={{ mt: 4 }}>
+            <FormControl fullWidth sx={{ px: 8, my: 1 }}>
               <Select
+                disableUnderline
                 variant="standard"
                 onChange={handleChange}
                 value={selectedVideoId}
                 sx={{
-                  textAlign: "center",
                   color: "white",
-                  "& .MuiSvgIcon-root": {
-                    color: "white",
-                  },
+                  textAlign: "center",
+                  "& .MuiSvgIcon-root": { color: "white" },
                 }}
               >
                 {allVideos[selectedVideoType]?.length
@@ -107,23 +106,20 @@ export default function Videos() {
                   : null}
               </Select>
             </FormControl>
-
-            <VideoPlayer url={selectedVideo?.url || ""} />
-
-            {selectedVideo && "pdf" in selectedVideo ? (
-              <Box sx={{ textAlign: "center", m: 0 }}>
-                <Button
-                  onClick={openPdf}
-                  startIcon={<PictureAsPdfIcon />}
-                  sx={{ my: 1, textTransform: "none", color: "white" }}
-                >
-                  Download Sheet Music
-                </Button>
-              </Box>
-            ) : null}
+          </CardContent>
+        </Card>
+        {selectedVideo && "pdf" in selectedVideo ? (
+          <Box sx={{ textAlign: "center", mt: 2 }}>
+            <Button
+              onClick={openPdf}
+              startIcon={<PictureAsPdfIcon />}
+              sx={{ textTransform: "none" }}
+            >
+              Download Sheet Music
+            </Button>
           </Box>
-        </CardContent>
-      </Card>
+        ) : null}
+      </>
     </Page>
   );
 }
