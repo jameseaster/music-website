@@ -55,7 +55,7 @@ export default function Playlist(props: PlaylistProps) {
         height: height,
         maxWidth: "360px",
         overflowX: "hidden",
-        borderRadius: "8px",
+        borderRadius: "4px",
         bgcolor: "background.paper",
       }}
       component="nav"

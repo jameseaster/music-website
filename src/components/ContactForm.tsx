@@ -94,7 +94,15 @@ export default function ContactForm() {
   }, [form.message, validated.message]);
 
   return (
-    <Stack spacing={4} sx={{ p: 1, mt: 2, width: { xs: "65vw", sm: "250px" } }}>
+    <Stack spacing={3} sx={{ p: 1, width: { xs: "65vw", sm: "250px" } }}>
+      <Typography
+        sx={{
+          textAlign: "center",
+          color: (theme) => theme.palette.text.secondary,
+        }}
+      >
+        Message me for bookings, questions, or lessons
+      </Typography>
       <TextField
         required
         size="small"

@@ -36,7 +36,7 @@ export default function ImageListItem(props: ImageListItemProps) {
             loading="lazy"
             src={`${img}`}
             srcSet={`${img}`}
-            style={{ width: "300px", borderRadius: "8px" }}
+            style={{ width: "300px", borderRadius: "4px" }}
           />
         </ImageListItemMui>
       </ImageButton>

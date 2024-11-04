@@ -1,7 +1,8 @@
 // Imports
 import { useState } from "react";
-import { Box, useTheme } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material";
+import Switch from "@mui/material/Switch";
 import { useColorMode } from "../context/Providers/ColorMode";
 import DarkModeTwoToneIcon from "@mui/icons-material/DarkModeTwoTone";
 import LightModeTwoToneIcon from "@mui/icons-material/LightModeTwoTone";
@@ -37,27 +38,16 @@ export default function ColorModeButton() {
   };
 
   return (
-    <Box sx={{ m: 3 }}>
-      <IconButton
-        sx={{
-          boxShadow:
-            mode === "dark"
-              ? `0px 3px 5px -1px rgba(0, 0, 0, 0.7),
-          0px 6px 10px 0px rgba(0, 0, 0, 0.82),
-          0px 1px 18px 0px rgba(0, 0, 0, 0.8)`
-              : `0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-           0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-           0px 1px 18px 0px rgba(0, 0, 0, 0.12)`,
-        }}
-        size="small"
-        onClick={toggleColor}
-      >
-        {mode === "light" ? (
-          <LightModeTwoToneIcon fontSize={"medium"} />
-        ) : (
-          <DarkModeTwoToneIcon fontSize={"medium"} />
-        )}
-      </IconButton>
-    </Box>
+    <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
+      <LightModeTwoToneIcon
+        fontSize="small"
+        color={theme.palette.mode === "light" ? "primary" : undefined}
+      />
+      <Switch size="small" onClick={toggleColor} />
+      <DarkModeTwoToneIcon
+        fontSize="small"
+        color={theme.palette.mode === "light" ? undefined : "primary"}
+      />
+    </Stack>
   );
 }

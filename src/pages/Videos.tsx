@@ -62,11 +62,16 @@ export default function Videos() {
               onClick={() => handleClick(videoType)}
               sx={{
                 mx: 1,
+                mb: 0.5,
                 width: "100px",
                 textTransform: "none",
                 transition: "0.25s all ease-in",
                 transform: videoType === selectedVideoType ? "scale(1.3)" : "",
                 letterSpacing: videoType === selectedVideoType ? "0.05em" : "0",
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? ""
+                    : theme.palette.text.primary,
               }}
             >
               {videoType}
@@ -113,7 +118,13 @@ export default function Videos() {
             <Button
               onClick={openPdf}
               startIcon={<PictureAsPdfIcon />}
-              sx={{ textTransform: "none" }}
+              sx={{
+                textTransform: "none",
+                color: (theme) =>
+                  theme.palette.mode === "light"
+                    ? ""
+                    : theme.palette.text.secondary,
+              }}
             >
               Download Sheet Music
             </Button>

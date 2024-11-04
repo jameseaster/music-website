@@ -15,6 +15,7 @@ export interface PageProps {
  * Page component which wraps each app page
  */
 const Page: React.FC<PageProps> = ({ sx, children, endHeight }) => {
+  // Use transition if endHeight is specified
   const childComponents = endHeight ? (
     <AnimatedTrail open={true} endHeight={endHeight}>
       {children}
@@ -22,6 +23,7 @@ const Page: React.FC<PageProps> = ({ sx, children, endHeight }) => {
   ) : (
     children
   );
+
   return (
     <Grid
       container
@@ -29,6 +31,7 @@ const Page: React.FC<PageProps> = ({ sx, children, endHeight }) => {
       alignItems="center"
       flexDirection="column"
       sx={{
+        mt: 4,
         mx: "auto",
         width: "100%",
         height: "100%",

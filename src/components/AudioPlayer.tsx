@@ -140,7 +140,6 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     <Box
       sx={{
         p: 2,
-        my: 2,
         display: "flex",
         position: "relative",
         borderRadius: "20px",

@@ -1,8 +1,10 @@
 // Imports
 import { Box } from "@mui/material";
+import Zoom from "@mui/material/Zoom";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { useAppState } from "../context/Providers/AppState";
-
 // Icons
 import HomeIcon from "@mui/icons-material/ChairTwoTone";
 import VideoIcon from "@mui/icons-material/LiveTvTwoTone";
@@ -53,13 +55,19 @@ export default function Navigation(props: NavigationProps) {
                 : `1px solid ${theme.palette.background.paper}`,
           }}
         >
-          <IconButton
-            size="large"
-            disableTouchRipple
-            onClick={() => handleSelect(index)}
+          <Tooltip
+            enterDelay={500}
+            TransitionComponent={Zoom}
+            title={<Typography variant="body2">{action.name}</Typography>}
           >
-            {action.icon}
-          </IconButton>
+            <IconButton
+              size="large"
+              disableTouchRipple
+              onClick={() => handleSelect(index)}
+            >
+              {action.icon}
+            </IconButton>
+          </Tooltip>
         </Box>
       ))}
     </Box>
