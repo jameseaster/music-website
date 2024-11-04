@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.16.4",
     "@mui/material": "^5.16.4",
     "@netlify/functions": "^2.8.2",
+    "@react-spring/web": "^9.7.5",
     "axios": "^1.7.7",
     "howler": "^2.2.4",
     "notistack": "^3.0.1",
