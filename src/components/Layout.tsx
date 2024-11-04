@@ -1,9 +1,8 @@
 // Imports
 import { Box } from "@mui/material";
 import Navigation from "./Navigation";
-import ColorModeButton from "./ColorModeButton";
-import Typography from "@mui/material/Typography";
 import LoadingOverlay from "./LoadingOverlay";
+import ColorModeButton from "./ColorModeButton";
 
 // Types
 export interface LayoutProps {
@@ -39,17 +38,6 @@ export default function Layout(props: LayoutProps) {
             flexDirection: "column",
           }}
         >
-          <Typography
-            variant={"h6"}
-            sx={{
-              mb: 1,
-              textAlign: "center",
-              fontWeight: "light",
-              letterSpacing: "0.5rem",
-            }}
-          >
-            JAMES EASTER
-          </Typography>
           <Navigation onTabSelect={onTabSelect} />
         </Box>
         {children}

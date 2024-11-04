@@ -1,6 +1,6 @@
 // Imports
-import { Box } from "@mui/material";
 import Page from "../components/Page";
+import HomeText from "../components/HomeText";
 
 /**
  * Home Page
@@ -8,7 +8,7 @@ import Page from "../components/Page";
 export default function Home() {
   return (
     <Page>
-      <Box sx={{ mt: 4 }}>Home</Box>
+      <HomeText />
     </Page>
   );
 }
