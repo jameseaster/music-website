@@ -4,7 +4,6 @@ import Card from "@mui/material/Card";
 import Page from "../components/Page";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { APP_CONSTANTS } from "../utils/constants";
 import FormControl from "@mui/material/FormControl";
 import CardContent from "@mui/material/CardContent";
 import VideoPlayer from "../components/VideoPlayer";
@@ -52,12 +51,11 @@ export default function Videos() {
   }, []);
 
   return (
-    <Page>
+    <Page endHeight={550}>
       <Card
         sx={{
           mt: 2,
           borderRadius: "20px",
-          boxShadow: APP_CONSTANTS.BOX_SHADOW,
           backgroundColor: (theme) => theme.palette.primary.main,
           border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
         }}

@@ -31,7 +31,7 @@ export default function Music() {
   };
 
   return (
-    <Page>
+    <Page endHeight={500}>
       <AudioPlayer
         skip={skip}
         tracks={tracks}

@@ -23,14 +23,12 @@ interface AppConstants {
   VERSION: string;
   DEFAULT_THEME: "dark" | "light";
   DRAWER_WIDTH: number;
-  BOX_SHADOW: string
   BORDER: string
 }
 const APP_CONSTANTS: AppConstants = {
   VERSION: `v${packageJson.version}`,
   DEFAULT_THEME: "light",
   DRAWER_WIDTH: 265,
-  BOX_SHADOW: "0 28px 28px rgba(0, 0, 0, .7)",
   BORDER: "1px solid rgba(255, 255, 255, 0.23)"
 };
 
@@ -39,8 +37,8 @@ export const PHOTOS = [
   { img: jazz, title: "jazz" },
   { img: prs, title: "prs" },
   { img: strat, title: "strat" },
-  { img: hat, title: "hat" },
   { img: newLife, title: "new-life" },
+  { img: hat, title: "hat" },
   { img: color, title: "WF-color" },
 ];
 

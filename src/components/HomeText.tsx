@@ -16,14 +16,33 @@ export default function HomeText() {
       sx={{ display: "flex", height: "100%" }}
       onClick={() => set((state) => !state)}
     >
-      <AnimatedTrail open={open}>
-        <Typography color="primary" variant="h1">
+      <AnimatedTrail open={open} endHeight={105}>
+        <Typography
+          color="primary"
+          variant="h1"
+          sx={{ letterSpacing: "-0.03em" }}
+        >
           James
         </Typography>
-        <Typography color="primary" variant="h1">
+        <Typography
+          variant="h1"
+          color="primary"
+          sx={{ letterSpacing: "-0.03em" }}
+        >
           Easter
         </Typography>
-        <Typography variant="h1">Music</Typography>
+        <Typography
+          variant="h1"
+          sx={{
+            letterSpacing: "-0.03em",
+            color: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.grey[700]
+                : "white",
+          }}
+        >
+          Music
+        </Typography>
       </AnimatedTrail>
     </Box>
   );

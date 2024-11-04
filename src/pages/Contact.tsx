@@ -7,7 +7,7 @@ import ContactForm from "../components/ContactForm";
  */
 export default function Contact() {
   return (
-    <Page>
+    <Page endHeight={500}>
       <ContactForm />
     </Page>
   );

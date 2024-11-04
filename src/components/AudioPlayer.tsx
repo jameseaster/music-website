@@ -6,7 +6,6 @@ import Slider from "@mui/material/Slider";
 import { Box, useTheme } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { APP_CONSTANTS } from "../utils/constants";
 import { useState, useEffect, useRef } from "react";
 import AudioControls from "../components/AudioControls";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
@@ -146,7 +145,6 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         position: "relative",
         borderRadius: "20px",
         flexDirection: "column",
-        boxShadow: APP_CONSTANTS.BOX_SHADOW,
         backgroundColor: (theme) => theme.palette.primary.main,
         border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
       }}

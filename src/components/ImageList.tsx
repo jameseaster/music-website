@@ -20,7 +20,7 @@ export default function ImageList() {
   // Columns on page
   const cols = useMemo(() => {
     if (md) {
-      return 3;
+      return 2;
     } else if (sm) {
       return 2;
     } else {
@@ -33,16 +33,7 @@ export default function ImageList() {
   };
 
   return (
-    <ImageListMui
-      gap={8}
-      cols={cols}
-      sx={{
-        width: "90vw",
-        maxWidth: "800px",
-        p: { xs: 4, sm: 8 },
-        pt: { xs: 0, sm: 1 },
-      }}
-    >
+    <ImageListMui cols={cols}>
       {PHOTOS.map((item) => (
         <ImageListItem
           key={item.img}

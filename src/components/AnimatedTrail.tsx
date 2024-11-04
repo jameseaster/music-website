@@ -4,6 +4,7 @@ import { useTrail, a } from "@react-spring/web";
 
 interface AnimatedTrailProps {
   open: boolean;
+  endHeight: number;
   children: React.ReactNode;
 }
 
@@ -11,7 +12,7 @@ interface AnimatedTrailProps {
  * Animates text with trail
  */
 export default function AnimatedTrail(props: AnimatedTrailProps) {
-  const { open, children } = props;
+  const { open, children, endHeight } = props;
 
   const items = React.Children.toArray(children);
 
@@ -19,7 +20,7 @@ export default function AnimatedTrail(props: AnimatedTrailProps) {
     config: { mass: 5, tension: 1000, friction: 250 },
     opacity: open ? 1 : 0,
     x: open ? 0 : 20,
-    height: open ? 110 : 0,
+    height: open ? endHeight : 0,
     from: { opacity: 0, x: 20, height: 0 },
   });
 
@@ -33,7 +34,6 @@ export default function AnimatedTrail(props: AnimatedTrailProps) {
             fontWeight: "100",
             overflow: "hidden",
             position: "relative",
-            letterSpacing: "-0.3em",
             willChange: "transform, opacity",
             ...style,
           }}

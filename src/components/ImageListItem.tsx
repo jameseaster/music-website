@@ -1,7 +1,7 @@
 // Imports
+import AnimatedTrail from "./AnimatedTrail";
 import { styled } from "@mui/material/styles";
 import ButtonBase from "@mui/material/ButtonBase";
-import { APP_CONSTANTS } from "../utils/constants";
 import { default as ImageListItemMui } from "@mui/material/ImageListItem";
 
 // Types
@@ -28,28 +28,18 @@ export default function ImageListItem(props: ImageListItemProps) {
   const { img, title, handleClick } = props;
 
   return (
-    <ImageButton
-      onClick={handleClick}
-      sx={{
-        borderRadius: "20px",
-        border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
-      }}
-    >
-      <ImageListItemMui
-        key={img}
-        sx={{
-          borderRadius: "20px",
-          boxShadow: APP_CONSTANTS.BOX_SHADOW,
-        }}
-      >
-        <img
-          alt={title}
-          loading="lazy"
-          src={`${img}`}
-          srcSet={`${img}`}
-          style={{ borderRadius: "20px" }}
-        />
-      </ImageListItemMui>
-    </ImageButton>
+    <AnimatedTrail open={true} endHeight={400}>
+      <ImageButton onClick={handleClick}>
+        <ImageListItemMui key={img}>
+          <img
+            alt={title}
+            loading="lazy"
+            src={`${img}`}
+            srcSet={`${img}`}
+            style={{ width: "300px", borderRadius: "8px" }}
+          />
+        </ImageListItemMui>
+      </ImageButton>
+    </AnimatedTrail>
   );
 }
