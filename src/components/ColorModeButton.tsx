@@ -43,7 +43,11 @@ export default function ColorModeButton() {
         fontSize="small"
         color={theme.palette.mode === "light" ? "primary" : undefined}
       />
-      <Switch size="small" onClick={toggleColor} />
+      <Switch
+        size="small"
+        onClick={toggleColor}
+        defaultChecked={theme.palette.mode === "dark"}
+      />
       <DarkModeTwoToneIcon
         fontSize="small"
         color={theme.palette.mode === "light" ? undefined : "primary"}
