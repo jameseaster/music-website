@@ -6,11 +6,11 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { useAppState } from "../context/Providers/AppState";
 // Icons
-import HomeIcon from "@mui/icons-material/ChairTwoTone";
-import VideoIcon from "@mui/icons-material/LiveTvTwoTone";
-import ContactIcon from "@mui/icons-material/EmailTwoTone";
-import MusicIcon from "@mui/icons-material/HeadphonesTwoTone";
-import PhotosIcon from "@mui/icons-material/PhotoCameraTwoTone";
+import HomeIcon from "@mui/icons-material/ChairOutlined";
+import VideoIcon from "@mui/icons-material/LiveTvOutlined";
+import ContactIcon from "@mui/icons-material/EmailOutlined";
+import MusicIcon from "@mui/icons-material/HeadphonesOutlined";
+import PhotosIcon from "@mui/icons-material/PhotoCameraOutlined";
 
 // Types
 export interface NavigationProps {

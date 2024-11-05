@@ -26,7 +26,7 @@ export default function Layout(props: LayoutProps) {
         background: (theme) =>
           theme.palette.mode === "light"
             ? "radial-gradient(#fff0d4, #fff)"
-            : "radial-gradient(#222, #000)",
+            : "radial-gradient(#333, #000)",
       }}
     >
       <LoadingOverlay />
