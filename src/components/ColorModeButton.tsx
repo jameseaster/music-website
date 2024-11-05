@@ -1,5 +1,5 @@
 // Imports
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material";
 import Switch from "@mui/material/Switch";
@@ -20,6 +20,7 @@ export default function ColorModeButton() {
   const theme = useTheme();
 
   // Local State
+  const initialMode = useRef(theme.palette.mode);
   const [mode, setMode] = useState(theme.palette.mode);
 
   // Hooks
@@ -46,7 +47,7 @@ export default function ColorModeButton() {
       <Switch
         size="small"
         onClick={toggleColor}
-        defaultChecked={theme.palette.mode === "dark"}
+        defaultChecked={initialMode.current === "dark"}
       />
       <DarkModeTwoToneIcon
         fontSize="small"

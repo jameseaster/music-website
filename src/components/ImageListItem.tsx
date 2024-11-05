@@ -13,12 +13,10 @@ export interface ImageListItemProps {
 
 // Increase brightness on hover
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
-  transition: "all 0.15s ease",
+  transition: "all 0.1s",
   marginBottom: "12px",
-  [theme.breakpoints.down("sm")]: {
-    marginBottom: "32px",
-  },
-  "&:hover, &.Mui-focusVisible": { opacity: 0.85, transform: "scale(1.005)" },
+  [theme.breakpoints.down("sm")]: { marginBottom: "32px" },
+  "&:hover, &.Mui-focusVisible": { filter: " brightness(1.35)" },
 }));
 
 /**
@@ -29,20 +27,14 @@ export default function ImageListItem(props: ImageListItemProps) {
 
   return (
     <AnimatedTrail open={true} endHeight={405}>
-      <ImageButton
-        onClick={handleClick}
-        sx={{
-          borderRadius: "4px",
-          border: (theme) => `1px solid ${theme.palette.text.secondary}`,
-        }}
-      >
+      <ImageButton onClick={handleClick} sx={{ borderRadius: "8px" }}>
         <ImageListItemMui key={img}>
           <img
             alt={title}
             loading="lazy"
             src={`${img}`}
             srcSet={`${img}`}
-            style={{ width: "300px", borderRadius: "4px" }}
+            style={{ width: "300px", borderRadius: "8px" }}
           />
         </ImageListItemMui>
       </ImageButton>

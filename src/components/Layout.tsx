@@ -25,8 +25,8 @@ export default function Layout(props: LayoutProps) {
         flexDirection: "column",
         background: (theme) =>
           theme.palette.mode === "light"
-            ? "radial-gradient(#fff0d4, #fff)"
-            : "radial-gradient(#333, #000)",
+            ? "radial-gradient(#ffe1d4, #ffffff)"
+            : "radial-gradient(#494949, #000)",
       }}
     >
       <LoadingOverlay />

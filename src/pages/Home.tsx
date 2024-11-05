@@ -13,8 +13,8 @@ export default function Home() {
     <Page>
       <HomeText />
       <Stack
-        direction="row"
         spacing={2}
+        direction="row"
         sx={{
           width: "280px",
           alignItems: "center",

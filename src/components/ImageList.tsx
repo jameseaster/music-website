@@ -32,7 +32,7 @@ export default function ImageList() {
   };
 
   return (
-    <ImageListMui cols={cols} sx={{ px: 2, mt: 0 }}>
+    <ImageListMui cols={cols} sx={{ px: 2, mt: 1 }}>
       {PHOTOS.map((item) => (
         <ImageListItem
           key={item.img}

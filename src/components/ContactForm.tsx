@@ -96,7 +96,13 @@ export default function ContactForm() {
   return (
     <Stack
       spacing={3}
-      sx={{ mt: -1, p: 1, width: { xs: "65vw", sm: "250px" } }}
+      sx={{
+        p: 3,
+        maxWidth: "300px",
+        borderRadius: "4px",
+        width: { xs: "80vw", sm: "300px" },
+        border: (theme) => `1px solid ${theme.palette.primary.main}`,
+      }}
     >
       <Typography
         sx={{
@@ -150,18 +156,19 @@ export default function ContactForm() {
         >
           {form.message.length} / 250
         </Typography>
+        <Button
+          variant="contained"
+          onClick={sendMessage}
+          disabled={disableSend}
+          sx={{
+            mt: 1,
+            alignSelf: "center",
+            textTransform: "none",
+          }}
+        >
+          Send Message
+        </Button>
       </Stack>
-      <Button
-        variant="contained"
-        onClick={sendMessage}
-        disabled={disableSend}
-        sx={{
-          alignSelf: "center",
-          textTransform: "none",
-        }}
-      >
-        Send Message
-      </Button>
     </Stack>
   );
 }

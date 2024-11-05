@@ -13,7 +13,7 @@ export default function HomeText() {
         mb: 4,
         p: { xs: 2, sm: 4 },
         borderRadius: "4px",
-        border: (theme) => `1px solid ${theme.palette.text.secondary}`,
+        border: (theme) => `1px solid ${theme.palette.primary.main}`,
       }}
     >
       <AnimatedTrail open={true} endHeight={105}>
