@@ -14,16 +14,18 @@ export default function ImageList() {
   const theme = useTheme();
 
   // Media Queries
-  const md = useMediaQuery(theme.breakpoints.up("md"));
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
   const sm = useMediaQuery(theme.breakpoints.up("sm"));
 
   // Columns on page
   const cols = useMemo(() => {
-    if (md || sm) {
+    if (lg) {
+      return 3;
+    } else if (sm) {
       return 2;
     }
     return 1;
-  }, [md, sm]);
+  }, [lg, sm]);
 
   const handleImageClick = (img: string) => {
     window.open(img, "_blank");

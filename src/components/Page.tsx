@@ -30,12 +30,14 @@ const Page: React.FC<PageProps> = ({ sx, children, endHeight }) => {
       display="flex"
       alignItems="center"
       flexDirection="column"
+      justifyContent="center"
       sx={{
-        mt: 4,
         mx: "auto",
         width: "100%",
         height: "100%",
+        minHeight: "70vh",
         maxWidth: "1400px",
+        mt: { xs: 4, sm: 0 },
         ...sx,
       }}
     >

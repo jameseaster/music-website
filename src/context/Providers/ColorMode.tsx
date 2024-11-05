@@ -32,6 +32,14 @@ const lightTheme = createTheme({
     // },
   },
   components: {
+    // MuiCssBaseline: {
+    //   styleOverrides: {
+    //     body: {
+    //       backgroundColor: "#FD8B51",
+    //       backgroundImage: `linear-gradient(19deg, #01204E 0%, #F6DCAC 75%, #FEAE6F 100%)`,
+    //     },
+    //   },
+    // },
     MuiListItemButton: {
       styleOverrides: {
         // root: ({ theme }) => ({

@@ -17,21 +17,31 @@ export default function Layout(props: LayoutProps) {
   const { children, onTabSelect } = props;
 
   return (
-    <>
+    <Box
+      component="main"
+      sx={{
+        display: "flex",
+        minHeight: "100vh",
+        flexDirection: "column",
+        background: (theme) =>
+          theme.palette.mode === "light"
+            ? "radial-gradient(#fff0d4, #fff)"
+            : "radial-gradient(#222, #000)",
+      }}
+    >
       <LoadingOverlay />
-      <Box component="main" sx={{ display: "flex", flexDirection: "column" }}>
-        <Box
-          sx={{
-            mt: 1,
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Navigation onTabSelect={onTabSelect} />
-        </Box>
-        {children}
+      <Box
+        sx={{
+          height: "10vh",
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Navigation onTabSelect={onTabSelect} />
       </Box>
-    </>
+      {children}
+    </Box>
   );
 }

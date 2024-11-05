@@ -52,7 +52,7 @@ export default function Navigation(props: NavigationProps) {
             borderBottom: (theme) =>
               activeTabIndex === index
                 ? `1px solid ${theme.palette.text.primary}`
-                : `1px solid ${theme.palette.background.paper}`,
+                : `none`,
           }}
         >
           <Tooltip
