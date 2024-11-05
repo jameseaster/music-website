@@ -57,6 +57,8 @@ export default function Navigation(props: NavigationProps) {
         >
           <Tooltip
             enterDelay={500}
+            disableFocusListener
+            disableTouchListener
             TransitionComponent={Zoom}
             title={<Typography variant="body2">{action.name}</Typography>}
           >

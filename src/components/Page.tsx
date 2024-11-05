@@ -37,7 +37,6 @@ const Page: React.FC<PageProps> = ({ sx, children, endHeight }) => {
         height: "100%",
         minHeight: "70vh",
         maxWidth: "1400px",
-        mt: { xs: 4, sm: 0 },
         ...sx,
       }}
     >

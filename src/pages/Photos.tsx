@@ -7,7 +7,7 @@ import ImageList from "../components/ImageList";
  */
 export default function Photos() {
   return (
-    <Page>
+    <Page sx={{ mt: { xs: 1, sm: 2 } }}>
       <ImageList />
     </Page>
   );

@@ -56,11 +56,10 @@ export default function Videos() {
   }, []);
 
   return (
-    <Page endHeight={600}>
+    <Page endHeight={600} sx={{ mt: { xs: 5, sm: 1 } }}>
       <>
         <Box
           sx={{
-            mt: 1,
             display: "flex",
             justifyContent: "center",
           }}

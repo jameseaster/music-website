@@ -10,7 +10,7 @@ import ColorModeButton from "../components/ColorModeButton";
  */
 export default function Home() {
   return (
-    <Page>
+    <Page sx={{ mt: { xs: 1, sm: -4 } }}>
       <HomeText />
       <Stack
         spacing={2}
