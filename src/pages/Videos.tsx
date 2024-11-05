@@ -16,8 +16,13 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
  * Videos Page
  */
 export default function Videos() {
+  const [ready, setReady] = useState(false);
   const [selectedVideoId, setSelectedVideoId] = useState("");
   const [selectedVideoType, setSelectedVideoType] = useState("Transcriptions");
+
+  const handleReadyState = (readyState: boolean) => {
+    setReady(readyState);
+  };
 
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedVideoId(event.target.value as string);
@@ -62,17 +67,21 @@ export default function Videos() {
         >
           {Object.keys(allVideos).map((videoType) => (
             <Button
+              size="large"
               disableRipple
               variant="text"
               key={videoType}
               onClick={() => handleClick(videoType)}
               sx={{
-                mx: 1,
+                mx: videoType === "Transcriptions" ? 3 : 0,
                 mb: 0.5,
-                width: "100px",
                 textTransform: "none",
-                transition: "0.25s all ease-in",
-                transform: videoType === selectedVideoType ? "scale(1.3)" : "",
+                transition: "0.3s all ease-in",
+                width: { xs: "100px", sm: "125px" },
+                transform:
+                  videoType === selectedVideoType
+                    ? "scale(1.3)"
+                    : "scale(0.95)",
                 letterSpacing:
                   videoType === selectedVideoType ? "0.1em" : "0.06em",
                 color: (theme) =>
@@ -88,12 +97,18 @@ export default function Videos() {
         <Card
           sx={{
             borderRadius: "20px",
-            backgroundColor: (theme) => theme.palette.primary.main,
+            transition: "1s all ease",
+            backgroundColor: (theme) =>
+              ready ? theme.palette.primary.main : "transparent",
             border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
           }}
         >
           <CardContent sx={{ p: 0, "&:last-child": { pb: 0 } }}>
-            <VideoPlayer url={selectedVideo?.url || ""} />
+            <VideoPlayer
+              ready={ready}
+              url={selectedVideo?.url || ""}
+              handleReadyState={handleReadyState}
+            />
             <FormControl fullWidth sx={{ px: { xs: 0.5, sm: 2 }, my: 1 }}>
               <Select
                 disableUnderline
