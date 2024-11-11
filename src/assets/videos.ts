@@ -85,7 +85,7 @@ export const allVideos: AllVideosInterface = {
       id: String(crypto.getRandomValues(array)),
       default: true,
       image: "https://img.youtube.com/vi/_meKYiOEe8Y/maxresdefault.jpg",
-      title: "Cool Blues - Charlie Parker",
+      title: "Charlie Parker - Cool Blues",
       url: "https://www.youtube.com/watch?v=_meKYiOEe8Y",
       pdf: Cool_Blues,
     },
