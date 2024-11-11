@@ -1,6 +1,7 @@
 // PDF Imports
 import Emily from "./pdf/Emily.pdf";
 import Softly from "./pdf/Softly.pdf";
+import Cool_Blues from "./pdf/Cool_Blues.pdf";
 import Witch_Hunt from "./pdf/Witch_Hunt.pdf";
 import Stablemates from "./pdf/Stablemates.pdf";
 import Ill_Be_Seeing_You from "./pdf/Ill_Be_Seeing_You.pdf";
@@ -11,7 +12,7 @@ import Wes_Montgomery_Satin_Doll from "./pdf/Wes_Montgomery_Satin_Doll.pdf";
 import Miles_Davis_Milestones_old from "./pdf/Miles_Davis_Milestones_old.pdf";
 
 export interface VideoInterface {
-  id: string;
+  id: string,
   url: string;
   image: string;
   title: string;
@@ -23,11 +24,14 @@ export interface AllVideosInterface {
   [key: string]: VideoInterface[];
 }
 
+const array = new Uint32Array(10);
+console.log(crypto.getRandomValues(array));
+
 // List of transcription videos that are passed to video player
 export const allVideos: AllVideosInterface = {
   "Live": [
     {
-      id: "A-8_s_-AYUM",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/A-8_s_-AYUM/maxresdefault.jpg",
       title: "Girl From Ipanema (Jobim)",
@@ -35,7 +39,7 @@ export const allVideos: AllVideosInterface = {
       pdf: undefined,
     },
     {
-      id: "oH0bN-_YZd4",
+      id: String(crypto.getRandomValues(array)),
       default: true,
       image: "https://img.youtube.com/vi/oH0bN-_YZd4/maxresdefault.jpg",
       title: "It Could Happen To You (Van Heusen)",
@@ -43,7 +47,7 @@ export const allVideos: AllVideosInterface = {
       pdf: undefined,
     },
     {
-      id: "wTY8S_s-z-k",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/wTY8S_s-z-k/maxresdefault.jpg",
       title: "Anthropology (Parker)",
@@ -51,7 +55,7 @@ export const allVideos: AllVideosInterface = {
       pdf: undefined,
     },
     {
-      id: "QC0a46cX5Sw",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/QC0a46cX5Sw/maxresdefault.jpg",
       title: "Lady Be Good (Gerswhin)",
@@ -59,7 +63,7 @@ export const allVideos: AllVideosInterface = {
       pdf: undefined,
     },
     {
-      id: "Ka9EV91Yku8",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/Ka9EV91Yku8/maxresdefault.jpg",
       title: "Out of Nowhere (Green)",
@@ -68,7 +72,7 @@ export const allVideos: AllVideosInterface = {
 
     },
     {
-      id: "kIeHv78cMn8",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/kIeHv78cMn8/maxresdefault.jpg",
       title: "Blues by Five (Garland)",
@@ -78,15 +82,23 @@ export const allVideos: AllVideosInterface = {
   ],
   "Transcriptions": [
     {
+      id: String(crypto.getRandomValues(array)),
       default: true,
-      id: "LJc4CPRfFoM",
+      image: "https://img.youtube.com/vi/_meKYiOEe8Y/maxresdefault.jpg",
+      title: "Cool Blues - Charlie Parker",
+      url: "https://www.youtube.com/watch?v=_meKYiOEe8Y",
+      pdf: Cool_Blues,
+    },
+    {
+      default: false,
+      id: String(crypto.getRandomValues(array)),
       image: "https://img.youtube.com/vi/LJc4CPRfFoM/maxresdefault.jpg",
       title: "Steve Masakowski - Emily",
       url: "https://www.youtube.com/watch?v=LJc4CPRfFoM",
       pdf: Emily,
     },
     {
-      id: "eZyFPcJjOkA",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/eZyFPcJjOkA/maxresdefault.jpg",
       title: "Dexter Gordon - Second Balcony Jump",
@@ -94,7 +106,7 @@ export const allVideos: AllVideosInterface = {
       pdf: Second_Balcony_Jump,
     },
     {
-      id: "z3FH5_C_pzo",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/z3FH5_C_pzo/maxresdefault.jpg",
       title: "Miles Davis - Milestones (old)",
@@ -102,7 +114,7 @@ export const allVideos: AllVideosInterface = {
       pdf: Miles_Davis_Milestones_old,
     },
     {
-      id: "nCrCLeIJzm8",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/nCrCLeIJzm8/maxresdefault.jpg",
       title: "Lee Morgan - Stablemates",
@@ -110,7 +122,7 @@ export const allVideos: AllVideosInterface = {
       pdf: Stablemates,
     },
     {
-      id: "Bq5qf50d-cI",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/Bq5qf50d-cI/maxresdefault.jpg",
       title: "Herbie Hancock - Witch Hunt",
@@ -118,7 +130,7 @@ export const allVideos: AllVideosInterface = {
       pdf: Witch_Hunt,
     },
     {
-      id: "gIe8VBxFGOM",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/gIe8VBxFGOM/maxresdefault.jpg",
       title: "Kurt Rosenwinkel - I'll Be Seeing You",
@@ -126,7 +138,7 @@ export const allVideos: AllVideosInterface = {
       pdf: Ill_Be_Seeing_You,
     },
     {
-      id: "lYYy3sZMRwQ",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/lYYy3sZMRwQ/maxresdefault.jpg",
       title: "Wes Montgomery - Montgomeryland Funk",
@@ -134,7 +146,7 @@ export const allVideos: AllVideosInterface = {
       pdf: undefined,
     },
     {
-      id: "lGysbDsvNOU",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/lGysbDsvNOU/maxresdefault.jpg",
       title: "Wes Montgomery - Satin Doll",
@@ -142,7 +154,7 @@ export const allVideos: AllVideosInterface = {
       pdf: Wes_Montgomery_Satin_Doll,
     },
     {
-      id: "uBfEOiovs9g",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/uBfEOiovs9g/maxresdefault.jpg",
       title: "Bill Hardman - Softly",
@@ -150,7 +162,7 @@ export const allVideos: AllVideosInterface = {
       pdf: Softly,
     },
     {
-      id: "rW97jsCq9A8",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/rW97jsCq9A8/maxresdefault.jpg",
       title: "Miles Davis - It Could Happen To You",
@@ -158,7 +170,7 @@ export const allVideos: AllVideosInterface = {
       pdf: It_Could_Happen_To_You,
     },
     {
-      id: "7Dy6AteuOHE",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/7Dy6AteuOHE/maxresdefault.jpg",
       title: "Peter Bernstein - Lady Bird",
@@ -168,7 +180,7 @@ export const allVideos: AllVideosInterface = {
   ],
   "Studio": [
     {
-      id: "mkLl_BpGbeU",
+      id: String(crypto.getRandomValues(array)),
       default: true,
       image: "https://img.youtube.com/vi/mkLl_BpGbeU/maxresdefault.jpg",
       title: "Ritual (James Easter)",
@@ -176,7 +188,7 @@ export const allVideos: AllVideosInterface = {
       pdf: undefined,
     },
     {
-      id: "t51AQyXH3I4",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/t51AQyXH3I4/maxresdefault.jpg",
       title: "Beatrice (Sam Rivers)",
@@ -184,7 +196,7 @@ export const allVideos: AllVideosInterface = {
       pdf: undefined,
     },
     {
-      id: "-28qjhW5Wzw",
+      id: String(crypto.getRandomValues(array)),
       default: false,
       image: "https://img.youtube.com/vi/-28qjhW5Wzw/maxresdefault.jpg",
       title: "Peace (Horace Silver)",
