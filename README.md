@@ -1,16 +1,28 @@
-<center>
+<div align="center">
   <br/>
   <br/>
-  <h1 style="margin-bottom: 0; border-bottom: none">James Easter Music</h1>
-  <a href="https://james-easter-music.netlify.app">jameseastermusic.com</a>
+  <!-- Heading without underline -->
+  <div id="user-content-toc">
+    <ul align="center" style="list-style: none;">
+      <summary>
+        <h1>James Easter Music</h1>
+      </summary>
+      <summary>
+        <a href="https://james-easter-music.netlify.app">jameseastermusic.com</a>
+      </summary>
+    </ul>
+  </div>
 
   <br/>
-  <p style="text-align: center; max-width: 350px; margin-top: 12px; margin-bottom: 16px">
-    <strong>
-      The home for pictures, audio & video recordings, and a contact form for anyone who finds my music enjoyable.
-    </strong>
-  </p>
 
+  <div align="center">
+    <p>
+      The home for pictures, audio & video recordings,<br/>
+      and a contact form for anyone who finds my music enjoyable.
+    </p>
+  </div>
+
+  <br/>
   <br/>
 
   <a href="https://app.netlify.com/sites/james-easter-music/deploys">
@@ -24,20 +36,23 @@
   </a>
 
   <br/>
-  <div align="center" >
+  <br/>
+  
+  <div align="center">
 
 [React](https://react.dev/) •
 [MUI](https://mui.com/) •
-[TypeScript](https://www.typescriptlang.org/) •
 [Howler](https://howlerjs.com/) •
 [React-Player](https://www.npmjs.com/package/react-player)
+
 
   </div>
   <div align="center" style="margin-top: -12px">
 
+[TypeScript](https://www.typescriptlang.org/) •
 [ESLint](https://eslint.org/) •
 [Vite](https://vite.dev/) •
 [Netlify](https://www.netlify.com/)
 
   </div>
-</center>
+</div>
