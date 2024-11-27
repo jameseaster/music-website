@@ -99,9 +99,9 @@ export default function ContactForm() {
       sx={{
         p: 3,
         maxWidth: "300px",
-        borderRadius: "4px",
+        borderRadius: "20px",
         width: { xs: "80vw", sm: "300px" },
-        border: (theme) => `1px solid ${theme.palette.primary.main}`,
+        border: (theme) => `0.5px solid ${theme.palette.text.secondary}`,
         backgroundColor: (theme) =>
           theme.palette.mode === "light"
             ? "rgba(255,255,255, 0.4)"

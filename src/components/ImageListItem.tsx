@@ -27,14 +27,20 @@ export default function ImageListItem(props: ImageListItemProps) {
 
   return (
     <AnimatedTrail open={true} endHeight={405}>
-      <ImageButton onClick={handleClick} sx={{ borderRadius: "8px" }}>
+      <ImageButton
+        onClick={handleClick}
+        sx={{
+          borderRadius: "20px",
+          // border: (theme) => `0.1px solid ${theme.palette.text.secondary}`,
+        }}
+      >
         <ImageListItemMui key={img}>
           <img
             alt={title}
             loading="lazy"
             src={`${img}`}
             srcSet={`${img}`}
-            style={{ width: "300px", borderRadius: "8px" }}
+            style={{ width: "300px", borderRadius: "20px" }}
           />
         </ImageListItemMui>
       </ImageButton>

@@ -25,7 +25,6 @@ export interface AllVideosInterface {
 }
 
 const array = new Uint32Array(10);
-console.log(crypto.getRandomValues(array));
 
 // List of transcription videos that are passed to video player
 export const allVideos: AllVideosInterface = {
