@@ -102,6 +102,10 @@ export default function ContactForm() {
         borderRadius: "4px",
         width: { xs: "80vw", sm: "300px" },
         border: (theme) => `1px solid ${theme.palette.primary.main}`,
+        backgroundColor: (theme) =>
+          theme.palette.mode === "light"
+            ? "rgba(255,255,255, 0.4)"
+            : "rgba(0,0,0,0.6)",
       }}
     >
       <Typography

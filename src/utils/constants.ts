@@ -1,12 +1,13 @@
 // Import version number
 import packageJson from "../../package.json";
 // Images
-import newLife from "../assets/images/3x4-new-life.png";
-import strat from "../assets/images/3x4-ochancey06.jpg";
-import prs from "../assets/images/3x4-ochancey01.jpg";
-import hat from "../assets/images/3x4-ochancey04.jpg";
-import color from "../assets/images/3x4-ochancey03.jpg";
 import jazz from "../assets/images/3x4-gsg04.jpg";
+import hat from "../assets/images/3x4-ochancey04.jpg";
+import strat from "../assets/images/3x4-ochancey06.jpg";
+import newLife from "../assets/images/3x4-new-life.png";
+import color from "../assets/images/3x4-ochancey03.jpg";
+import outside from "../assets/images/3x4-photo-shoot.png";
+// import prs from "../assets/images/3x4-ochancey01.jpg";
 
 // Global State Actions
 interface ActionType {
@@ -35,11 +36,12 @@ const APP_CONSTANTS: AppConstants = {
 // Constants
 export const PHOTOS = [
   { img: jazz, title: "jazz" },
-  { img: prs, title: "prs" },
+  { img: hat, title: "hat" },
   { img: strat, title: "strat" },
   { img: newLife, title: "new-life" },
-  { img: hat, title: "hat" },
   { img: color, title: "WF-color" },
+  { img: outside, title: "outside" },
+  // { img: prs, title: "prs" },
 ];
 
 
