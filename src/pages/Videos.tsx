@@ -133,7 +133,7 @@ export default function Videos() {
             </FormControl>
           </CardContent>
         </Card>
-        {selectedVideo && "pdf" in selectedVideo ? (
+        {selectedVideo?.pdf ? (
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Button
               onClick={openPdf}
